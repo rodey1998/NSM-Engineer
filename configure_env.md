@@ -4,6 +4,7 @@
 
 `:%d` deletes contents of file  
 `lxc list` and `lxc start all` list all containers
+`ssh repo` 
 
 ## Credentials
 Username : elastic  
@@ -57,6 +58,45 @@ PREFIX=24
 > restart the network  
 `sudo systemctl restart network`
 
+add /etc/hosts to student laptop
+
+## SSH configs to devices
+`sudo vi ~/.ssh/config` - open ssh client
+
+```
+Host repo
+  HostName repo
+  User elastic
+Host sensor
+  HostName sensor
+  User elastic
+Host elastic0
+  HostName elastic0
+  User elastic
+Host elastic1
+  HostName elastic1
+  User elastic
+Host elastic2
+  HostName elastic2
+  User elastic
+Host pipeline0
+  HostName pipeline0
+  User elastic
+Host pipeline1
+  HostName pipeline1
+  User elastic
+Host pipeline2
+  HostName pipeline2
+  User elastic
+Host kibana
+  HostName kibana
+  User elastic
+```
+
+`ssh-keygen` all default settings stored in */home/ubuntu/.ssh/id_rsa*  
+`for host in sensor repo elastic{0..2} pipeline{0..2} kibana; do ssh-copy-id $host; done`
+
 ## Takeaways
 - Verify all containers are up and running 
 - Verify label, IP, and trusted hosts
+- Configure SSH shortcuts via host file and ssh keys
