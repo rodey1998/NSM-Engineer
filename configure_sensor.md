@@ -103,16 +103,6 @@ sudo vi /etc/yum.repos.d/local.repo
 
 put all the repos in each box
 
-elastic0 done
-elastic1 done
-elastic2 done
-pipeline0 done
-pipeline1 done
-pipeline2
-kibana
-repo done
-sensor done
-
 rm *.repo
 
 ll /etc/yum.repos.d
@@ -122,6 +112,30 @@ mssh name1 name2 name3
 > this whole section is messed up, fix for loop will be presented in the future.
 
 ---
+
+## Takeaways
+- Pulled all repo files and modified repo pointer to look for updates locally
+
+
+## copy local cert from repo container to all other containers
+`for host in sensor elastic{0..2} pipeline{0..2} kibana; do scp ~/certs/localCA.crt elastic@$host:/home/elastic/localCA.crt ; done`
+
+1. `sudo mv ~/localCA.crt /etc/pki/ca-trust/source/anchors/localCA.crt`
+2. `sudo update-ca-trust`
+
+
+`sudo vi /etc/nginx/conf.d/proxy.conf` on repo
+`location /packages/` this needed to be changed, dev notified
+`sudo yum makecache fast` verify your local.repo file, things were duplicated
+
+> figure out how to organize this before the capstone
+
+## Student laptop again
+`sudo scp elastic@repo:/home/elastic/certs/localCA.crt ~/localCA.crt`
+
+add in this cert to chrome web browser
+https://repo/fileshare/
+successfully implemented tls on fileshare and repo
 
 
 
