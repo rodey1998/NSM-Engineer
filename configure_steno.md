@@ -44,7 +44,7 @@ Packets dir is where files are being written to - change this
 # Configure Suricata
 
 `sudo yum install suricata`
-`sudo -s` root
+`sudo -s ` - sets you to root
 `ll /etc/suricata`
 `vi /etc/suricata/suricata.yaml` - spaces will mess this file up
 `:set nu`

@@ -1,0 +1,14 @@
+Deploying Zeek Using Zeekctl
+Zeekctl is a management wrapper for Zeek. It is used to manage the zeek workers in a standalone or distributed cluster.
+Each Zeek worker will get its own persistent process when it is started.
+Using Zeekctl on the command line:
+NOTE: We want to start Zeek as the zeek user, NOT AS ROOT. The zeek user owns all configs and binaries used for Zeek, so we need to use the following command syntax to call zeekctl:
+sudo -u zeek zeekctl deploy - Used to install all of the static configurations to a “running configuration” This command is run upon initial start of the Zeek cluster Note: If any changes are made to any Zeek configs after Zeek has been deployed, then this command will need to be run again to update the changes to the running config.
+sudo -u zeek zeekctl start - Will start the Zeek cluster. Used if Zeek has been stopped but no config changes have been made. Useful to restart a crashed worker without having to restart the whole cluster.
+sudo -u zeek zeekctl stop - Stop the cluster
+sudo -u zeek zeekctl status - Displays information about the running state of the Zeek cluster with information such as:
+Process Type
+Running/Stopped/Crashed processes
+PID
+Start time
+sudo -u zeek zeekctl diag - Displays a diagnostic output. Lists loaded scripts, errors, warnings and status information.
