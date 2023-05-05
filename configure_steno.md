@@ -72,7 +72,7 @@ line 981,2,3 -> uncomment user/group suricata
 
 OPTIONS="--af-packet=eth1 --user suricata --group suricata"
 
-sudo suricata-update add-source emergingthreats https://repo/fileshare/emerging.rules.tar.gz
+`sudo suricata-update add-source emergingthreats https://repo/fileshare/emerging.rules.tar.gz`
 
 > suricata update to point to fileshare to get emerging rules
 

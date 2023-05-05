@@ -61,7 +61,7 @@ line 33-36 were added after interface change
 17. `shift g` - bottom of page
 18. add the following lines   
 `@load ./scripts/afpacket.zeek`  
-`@load ./scripts/extension.zeek` - space after this line
+`@load ./scripts/extension.zeek` - space after this line **MAYBE ERROR**
 `redef ignore_checksums = T;`
 19. `sudo mkdir -p /data/zeek`
 20. change ownership on following dirs  
@@ -132,7 +132,7 @@ Download Zeek Scripts to sensor from repo (be on sensor)
 
 > `journalctl -xeu <service>` - troubleshooting a service, extra info
 
-10. `/opt/fsf/fsf-client/fsf_client.py --full interface.sh` - scan file to esnure fsf is working
+10. `/opt/fsf/fsf-client/fsf_client.py --full interface.sh` - scan file to esnure fsf is working make sure you run as elastic not root
 
 ---
 
@@ -161,6 +161,8 @@ Download Zeek Scripts to sensor from repo (be on sensor)
 > FSF converts logs from zeek (tab delimited) to json that filebeat can understand.
 
 ---
+
+
 
 
 
