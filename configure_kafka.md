@@ -40,7 +40,7 @@
 ```
 6. `sudo touch /data/zookeeper/myid` - new file
 7. `sudo chown zookeeper: /data/zookeeper/myid`
-8. `echo '1' | sudo tee /data/zookeeper/myid`
+8. `echo '3' | sudo tee /data/zookeeper/myid`
 9. `cat /data/zookeeper/myid` - verify content - each pipeline will have its own id
 10. `sudo firewall-cmd --add-port={2181,2888,3888}/tcp --permanent` - 2181 zookeeper default
 11. `sudo firewall-cmd --reload`
@@ -128,7 +128,7 @@ line 3 `broker.id = 0`
 line 13 - `listeners`  
 line 19 - `advertised`  
 
-> /etc/kafka.server.properties
+> /etc/kafka/server.properties
 pipeline0 - broker.id =0
 pipeline1 - broker.id =1
 pipeline2 - broker.id =2
@@ -155,7 +155,6 @@ Lists The Topic:
 
 Lists Out The Topic & Shows Replication/Partition
 `sudo /usr/share/kafka/bin/kafka-topics.sh --bootstrap-server pipeline0:9092 --describe --topic test` 
-12:17
 
 Creates The Topic:
 `sudo /usr/share/kafka/bin/kafka-topics.sh --bootstrap-server pipeline0:9092 --create --topic test --partitions 3 --replication-factor 3`
@@ -174,11 +173,12 @@ Creates The Topic:
 9. `sudo /usr/share/kafka/bin/kafka-console-consumer.sh --bootstrap-server pipeline0:9092 --topic zeek-raw` - back on pipeline0
 
 `cd /usr/share/zeek/site/scripts/` - sensor
-`sudo vi kafka.zeek`
+`sudo vi kafka.zeek` - plugin file
 
 line 7 - `["metadata.broker.list"] = "pipeline0:9092,pipeline1:9092,pipeline2:9092");`
 deploy zeek
 run step 9, this shows that kafka is getting the traffic from zeek
+
 
 
 

@@ -53,8 +53,6 @@ line 33-36 were added after interface change
 `sudo curl -LO https://repo/fileshare/zeek/json.zeek`  
 `sudo curl -LO https://repo/fileshare/zeek/kafka.zeek`
 
-# START HERE TOMORROW 5/4/23
-
  > `/usr/share/zeek/site` - local.zeek lives here
 
 16. `sudo vi /usr/share/zeek/site/local.zeek` - what zeek is using for scripts
@@ -132,7 +130,7 @@ Download Zeek Scripts to sensor from repo (be on sensor)
 
 > `journalctl -xeu <service>` - troubleshooting a service, extra info
 
-10. `/opt/fsf/fsf-client/fsf_client.py --full interface.sh` - scan file to esnure fsf is working make sure you run as elastic not root
+10. `/opt/fsf/fsf-client/fsf_client.py --full interface.sh` - scan file to ensure fsf is working make sure you run as elastic not root. also be in home directory if not full path
 
 ---
 
@@ -162,6 +160,7 @@ Download Zeek Scripts to sensor from repo (be on sensor)
 
 ---
 
+Zeek does not need filebeat because it has a a plugin
 
 
 

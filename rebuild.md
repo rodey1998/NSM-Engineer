@@ -61,7 +61,11 @@ gpgcheck=0
 
  follow zeek_install
 
+ follow configure_kafka
 
+ follow configure_filebeat
+
+follow configure elastic
 
 
 
